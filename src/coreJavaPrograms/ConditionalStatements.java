@@ -56,5 +56,78 @@ public class ConditionalStatements {
 		}
 	}
 	
+	//write  a program to read two numbers as input , 
+	//perform addition if they are equal , a>b -> subtraction , a<b -> multiplication
+	@Test
+	public void demonstrateElseIf_test() {
+		demonstrateElseIf(30,30); //33.333 %
+		demonstrateElseIf(70,30);
+		demonstrateElseIf(20,30);
+	}
+	public void demonstrateElseIf(int a,int b) {
+		System.out.println("First Number :" + a);
+		System.out.println("Second Number :" + b);
+		if(a==b) {  // == , > ,< : relational operator
+			int sum = a+b; // + ,- , * : Arithamatic
+			System.out.println("Sum of two numbers :" + sum);
+		}
+		else if(a>b) {
+			int diff = a-b; // = : assignment 
+			System.out.println("Difference of two numbers :" + diff);
+		}
+		else if(a<b) {
+			int prod = a*b;
+			System.out.println("Product of two numbers :" + prod);
+		}		
+	}
+	
+	//write  a program to read two numbers as inputs , if both the inputs are >=10 then only perform the below task
+		//Task : perform addition if they are equal , a>b -> subtraction , a<b -> multiplication
+	@Test
+	public void logicalOperators_test() {
+		logicalOperators(12,8);
+		logicalOperators(2,88);
+		logicalOperators(2,8);
+		logicalOperators(18,18);
+		logicalOperators(28,18);
+		logicalOperators(18,48);
+	}
+	public void logicalOperators(int a,int b) {
+		System.out.println("First Number :" + a);
+		System.out.println("Second Number :" + b);
+		if(a>=10 && b>=10) {  //&& logical
+			//T  &&  T -> T -> Task
+			if(a==b) {  // == , > ,< : relational operator
+				int sum = a+b; // + ,- , * : Arithamatic
+				System.out.println("Sum of two numbers :" + sum);
+			}
+			else if(a>b) {
+				int diff = a-b; // = : assignment 
+				System.out.println("Difference of two numbers :" + diff);
+			}
+			else if(a<b) {
+				int prod = a*b;
+				System.out.println("Product of two numbers :" + prod);
+			}		
+		}
+		else {
+			System.out.println("Both A and B / any of them might be below 10");
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
