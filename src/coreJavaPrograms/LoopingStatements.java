@@ -79,14 +79,61 @@ public class LoopingStatements {
 	
 	//different step sizes ,  nested loop , having condition inside a loop
 	
+	//break inside for loop
+	@Test
+	public void findStudent() {
+		// 50 students 1-50 , need 22  [50]
+		for(int i=1;i<=50;i=i+1) {
+			System.out.println("Searching roll numbers :" + i);  // i =1 2 3 4 5 
+			if(i==22)// 1=22->F 2=22 F , 3=22 4=22  ....... 21=22 22=22
+			{
+				System.out.println("Found the student , Roll Num : 22");
+				break;
+			}
+		}
+	}
 	
+	// print only even numbers from 1-50
+	@Test
+	public void printEvenNumbers() {
+		for(int i=2;i<50;i=i+2)  // i++ : i=i+1
+		{
+			System.out.println(i);
+		}
+	}
+	// print only odd numbers from 1-50
+	@Test
+	public void printOddNumbers() {
+		for(int i=1;i<50;i=i+2)  // i++ : i=i+1
+		{
+			System.out.println(i);
+		}
+	}
 	
+	// Apply color to the steps of the building with 5 floors each floor having 20 steps , use different color for every floor 
+	@Test
+	public void applyColorToBuilding() {
+		for(int i=1;i<=5;i++)  // outer loop
+		{
+			System.out.println("I am in Floor :" + i);  // 20 steps
+			for(int j=1;j<=20;j++) //inner loop
+			{
+				System.out.println("Apply color in Floor Number :"+ i + " to Step Number :" + j);
+			}
+			
+		}
+	}
 	
-	
-	
-	
-	
-	
+	//for each
+	//while
+	@Test
+	public void printMyNumbers() {
+		int i=50;
+		while(i>0) {
+			System.out.println("Wait for him");
+			i--;
+		}
+	}
 	
 	
 	
