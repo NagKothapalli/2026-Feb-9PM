@@ -2,7 +2,8 @@ package testCases;
 
 import org.junit.Test;
 
-import multilevelInheritance.ReusableComponents;
+import rComponents.ReusableComponents;
+
 //				child					parent
 public class TestCases extends ReusableComponents
 {

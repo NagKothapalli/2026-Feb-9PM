@@ -1,12 +1,20 @@
-package multilevelInheritance;
+package inheritanceWithObject;
 
 public class ReusableComponents {
+	
+	public ReusableComponents() {
+		System.out.println("Open Google Chrome Browser ByDefault");
+	}
+	public ReusableComponents(String browser) {
+		System.out.println("Open  Browser :" + browser);
+		//if chrome then open chrome else if edge then open edge else if firefox then open firefox
+	}
 	//------------------------------Reusable Component ----------------------------------
 		protected void launchApplication() {
 			System.out.println("RC : Launch Gmail Application"); // 10 lines
 		}
 		
-		void loginToApplication() {
+		 void loginToApplication() {
 			System.out.println("RC : Login to Gmail Application from RC"); // 10 lines
 		}
 		protected void logoutFromApplication() {

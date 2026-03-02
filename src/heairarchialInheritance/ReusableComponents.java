@@ -1,4 +1,4 @@
-package multilevelInheritance;
+package heairarchialInheritance;
 
 public class ReusableComponents {
 	//------------------------------Reusable Component ----------------------------------

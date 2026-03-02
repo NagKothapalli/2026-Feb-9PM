@@ -1,14 +1,12 @@
-package multilevelInheritance;
+package inheritanceWithObject;
 
 import org.junit.Test;
-//				child					parent
-public class TestCases extends ReusableComponents
+
+public class TestCases // extends ReusableComponents
 {
-	/*
-	 * void loginToApplication() {
-	 * System.out.println("RC : Login to Gmail Application from TestCases class");
-	 * // 10 lines }
-	 */
+	//Modifier   TypeName             objName  = new Constructor();
+	  // public ReusableComponents        rc =  new ReusableComponents(); // default constructor
+	   public ReusableComponents        rc =  new ReusableComponents("edge"); 
 	//-----------------------------Test Cases ---------------------------------------
 		@Test  // Ramesh - jira ticket
 		public void composeAndSendAnEmail() {
@@ -16,48 +14,48 @@ public class TestCases extends ReusableComponents
 			//launch - open an empty browser , call gmail application , make sure app loaded properly -10 lines		
 			//login to gmail - enter user , enter pw , click login btn , verify user login and correct user logged in - 20
 			//go to Inbox , compose , send , logout , close
-			launchApplication();
-			loginToApplication();
-			navigateToInbox();
-			compose();
-			logoutFromApplication();
-			closeApplication();
+			rc.launchApplication();
+			rc.loginToApplication();
+			rc.navigateToInbox();
+			rc.compose();
+			rc.logoutFromApplication();
+			rc.closeApplication();			
 		}
 		
 		@Test  // Ram - jira ticket 
 		public void replyToAnEMail() {
 			System.out.println("Test Case : Reply To An Email");
 			//launch , login , go to inbox , logout , close 
-			launchApplication();
-			loginToApplication();
-			navigateToInbox();
-			reply();
-			logoutFromApplication();
-			closeApplication();
+			rc.launchApplication();
+			rc.loginToApplication();
+			rc.navigateToInbox();
+			rc.reply();
+			rc.logoutFromApplication();
+			rc.closeApplication();
 		}
 
 		@Test  // Suresh - jira ticket 123
 		public void forwardAnEmail() {
 			System.out.println("Test Case : Forward An Email");
 			//launch , login , go to inbox , logout , close 
-			launchApplication();
-			loginToApplication();
-			navigateToInbox();
-			forward();
-			logoutFromApplication();
-			closeApplication();
+			rc.launchApplication();
+			rc.loginToApplication();
+			rc.navigateToInbox();
+			rc.forward();
+			rc.logoutFromApplication();
+			rc.closeApplication();
 		}
 
 		@Test  // Arun
 		public void DeleteMail() {
 			System.out.println("Test Case : Delete Email");
 			//launch , login , go to inbox , logout , close 
-			launchApplication();
-			loginToApplication();
-			navigateToInbox();
-			delete();
-			logoutFromApplication();
-			closeApplication();
+			rc.launchApplication();
+			rc.loginToApplication();
+			rc.navigateToInbox();
+			rc.delete();
+			rc.logoutFromApplication();
+			rc.closeApplication();
 		}
 
 }

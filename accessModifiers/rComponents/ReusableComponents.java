@@ -6,14 +6,14 @@ public class ReusableComponents {
 			System.out.println("RC : Launch Gmail Application"); // 10 lines
 		}
 		
-		void loginToApplication() {
+		public void loginToApplication() {
 			System.out.println("RC : Login to Gmail Application"); // 10 lines
 		}
-		void logoutFromApplication()  // default
+		protected void logoutFromApplication()  // default
 		{
 			System.out.println("RC : Logout From Application"); // 10 lines
 		}
-		public void closeApplication() {
+		protected void closeApplication() {
 			System.out.println("RC : Close Application"); // 10 lines
 		}
 		public void compose() {

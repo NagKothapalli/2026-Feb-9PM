@@ -2,7 +2,7 @@ package testSuites;
 
 import org.junit.Test;
 
-import multilevelInheritance.TestCases;
+import testCases.TestCases;
 
 public class TestSuites  extends TestCases{
 	// ----------------Test Suites-------------
