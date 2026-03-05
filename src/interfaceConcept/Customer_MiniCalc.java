@@ -10,6 +10,7 @@ public class Customer_MiniCalc
 	ArithematicOperations aMini = new MiniCalculator(); //10
 	ArithematicOperations aComm = new CommercialCalculator(); //100
 	
+	
 	@Test
 	public void aCommBill() {
 		comm.welcomeToCommercialCalc();
