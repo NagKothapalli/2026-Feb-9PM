@@ -17,7 +17,7 @@ public class SimpleCollections {
 	//Declare , assign , length , read values , write values in to the array 
 	@Test
 	public void fixedArray() {
-		int[]  rollNumbers = {12,14,13,7,6,9,80,23};
+		int[]  rollNumbers = {12,14,13,7,6,9,80,23}; // india - how many states 
 		int count = rollNumbers.length;
 		System.out.println("Array Length :" + count);
 		// i=0 1 2 3 4 5 6 7 ... 8th index
