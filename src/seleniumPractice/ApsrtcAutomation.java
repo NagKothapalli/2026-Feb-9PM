@@ -16,13 +16,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class ApsrtcAutomation {
 	
 	WebDriver driver;
-	
-	public ApsrtcAutomation() {
+	DriverUtilities utils;
+	public ApsrtcAutomation() throws IOException {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://www.apsrtconline.in/");   // dev / qa / stage / prod
+		//driver.get("https://www.apsrtconline.in/");   // dev / qa / stage / prod
+		driver.get(ReadTestData.getData("URL"));
+		utils = new DriverUtilities(driver);
 	}
-	//***************************************************************************
+	//***********************Relative xpaths****************************************************
 	String timetableXpath = "//a[@title='TimeTable / Track']";
 	String homeXpath = "//a[@title='Home']";
 	String allServicesXpath = "//a[text()='All services Time Table & Tracking']";
@@ -47,6 +49,13 @@ public class ApsrtcAutomation {
 		System.out.println(prop.getProperty("PassWord"));
 	}
 	
+	/*
+	 * public String getData(String mykey) throws IOException { FileInputStream
+	 * myfile = new FileInputStream("TestData/ApsrtcData.properties"); // News paper
+	 * Properties prop = new Properties(); // is like news reader prop.load(myfile);
+	 * // handover the newspaper to news reader String value =
+	 * prop.getProperty(mykey); return value; }
+	 */
 	@Test
 	public void bookBusTicket() throws InterruptedException {
 		System.out.println("Test Case  : Book Bus Ticket ");
@@ -63,19 +72,39 @@ public class ApsrtcAutomation {
 		driver.findElement(By.xpath("//a[text()='25']")).click();
 		driver.findElement(By.xpath("//input[@name='searchBtn']")).click();
 	}
+	
+	@Test  // flaky test cases 
+	public void bookBusTicket_TestData() throws InterruptedException, IOException {
+		System.out.println("Test Case  : Book Bus Ticket ");
+		//enter from city , to city , date , click on check availability
+		//ReadTestData.getData("URL");
+		String city = ReadTestData.getData("FromCity");
+		
+		utils.enterText(fromCityXpath,city);  // Hard coded data 
+		utils.fixedWait(1);		
+		utils.clickEnter(fromCityXpath);		
+		utils.enterText(toCityXpath,ReadTestData.getData("ToCity"));
+		utils.fixedWait(1);		
+		utils.clickEnter(toCityXpath);
+		utils.clickElement(openCalendarXpath);
+		String jd = ReadTestData.getData("JDate");
+		String jDateXpath = "//a[text()='"+jd+"']";   //a[text()=28]  - dynamic xpath
+		utils.clickElement(jDateXpath);
+		utils.clickElement(searchBtnXpath);
+	}
 	@Test
 	public void bookBusTicket_Utility() throws InterruptedException {
 		System.out.println("Test Case  : Book Bus Ticket ");
 		//enter from city , to city , date , click on check availability
-		enterText(fromCityXpath,"HYDERABAD");  // Hard coded data 
-		fixedWait(1);		
-		clickEnter(fromCityXpath);		
-		enterText(toCityXpath,"GUNTUR");
-		fixedWait(1);		
-		clickEnter(toCityXpath);
-		clickElement(openCalendarXpath);
-		clickElement(jDateXpath);
-		clickElement(searchBtnXpath);
+		utils.enterText(fromCityXpath,"HYDERABAD");  // Hard coded data 
+		utils.fixedWait(1);		
+		utils.clickEnter(fromCityXpath);		
+		utils.enterText(toCityXpath,"GUNTUR");
+		utils.fixedWait(1);		
+		utils.clickEnter(toCityXpath);
+		utils.clickElement(openCalendarXpath);
+		utils.clickElement(jDateXpath);
+		utils.clickElement(searchBtnXpath);
 		
 		//Thread.sleep(1000);
 				//driver.findElement(By.xpath("//input[@name='source']")).sendKeys(Keys.TAB);
@@ -114,8 +143,8 @@ public class ApsrtcAutomation {
 	public void handleMultipleWindows() {
 		//driver.findElement(By.xpath("//a[@title='TimeTable / Track']")).click();
 		//clickElement("//a[@title='TimeTable / Track']");
-		clickElement(timetableXpath);
-		clickElement(allServicesXpath);
+		utils.clickElement(timetableXpath);
+		utils.clickElement(allServicesXpath);
 		Set<String> sessions = driver.getWindowHandles();  // 10 sessions i=1 id1 , i=2 id2 .......
 		//for(String id:sessions) {
 			//System.out.println(id);
@@ -135,25 +164,14 @@ public class ApsrtcAutomation {
 		driver.close(); // it will close the current active window
 		//driver.quit(); //org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
 		driver.switchTo().window(allWindows.get(0));
-		clickElement(homeXpath);
+		utils.clickElement(homeXpath);
 		driver.findElement(By.xpath("//input[@name='source']")).sendKeys("HYDERABAD");
 		System.out.println("Title of the 1st window :" + driver.getTitle());
 		driver.quit(); // it will kill the driver instance 
 	}
 	
 	//****************************Utility function
-	public void clickElement(String myxpath) {
-		driver.findElement(By.xpath(myxpath)).click();
-	}
-	public void enterText(String myxpath,String text) {
-		driver.findElement(By.xpath(myxpath)).sendKeys(text);
-	}	
-	public void clickEnter(String myxpath) {
-		driver.findElement(By.xpath(myxpath)).sendKeys(Keys.ENTER);
-	}
-	public void fixedWait(int waitTime) throws InterruptedException {
-		Thread.sleep(waitTime * 1000);
-	}
+	
 	
 	
 	
